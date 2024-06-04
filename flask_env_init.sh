@@ -1,0 +1,2 @@
+export FLASK_APP=Arrata
+export FLASK_ENV=development

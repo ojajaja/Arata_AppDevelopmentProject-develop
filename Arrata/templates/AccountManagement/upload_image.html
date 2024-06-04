@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    form{
+        padding-top: 50px;
+    }
+    h1{
+        padding-top: 50px;
+        padding-left: 40%;
+    }
+    input{
+        margin-left: 40%;
+        width: 400px;
+    }
+    #output{
+        box-sizing: content-box;
+        width: 10%;
+        height: 10%;
+        border: transparent;
+        padding: 5px;
+        margin-left: 45%;
+        padding-bottom: 20px;
+        padding-top: 20px;
+
+    }
+     #submit{
+        font-size: 25px;
+        background-color: #6FC9E7;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 50px 10px;
+        margin-left: 45%;
+    }
+
+    #submit:hover{
+       background-color: blue;
+       color: white;
+    }
+</style>
+<h1>Upload Avatar Image</h1>
+<form action="/upload_image" enctype="multipart/form-data" method="post">
+    <input accept="image/*" name="file" onchange="loadFile(event)" type="file">
+    <img id="output" />
+    <br>
+    <button type="submit" id="submit">Submit</button>
+</form>
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src)
+    }
+  };
+  document.getElementById("myFileInputID").value = null;
+</script>
+{% endblock %}
+

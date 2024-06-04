@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+     h1{
+        padding-top: 50px;
+        text-align: center;
+    }
+    table{
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    table tr th{
+        font-size: 25px;
+        text-align:right;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+
+    table tr td{
+        font-size: 25px;
+        text-align:left;
+    }
+    div{
+        text-align: center;
+    }
+    #submit{
+        font-size: 25px;
+        background-color: #6FC9E7;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 50px 10px;
+    }
+    #submit:hover{
+       background-color: blue;
+       color: white;
+    }
+    td{
+        padding-bottom: 10px;
+    }
+    input, select{
+        width: 150px;
+    }
+</style>
+
+<form method="post" action="#">
+    <h1>Edit Customer Profile</h1>
+    {% for customer in customer_list %}
+    <table>
+        <tr>
+            <th>Email Address: </th>
+            <td><input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" title="For example: john@gmail.com" placeholder="Enter your Email Address" value="{{ customer.get_email() }}"/></td>
+        </tr>
+        <tr>
+            <th>Name: </th>
+            <td><input type="text" name="name" placeholder="Enter your Name" value="{{ customer.get_name() }}"/></td>
+        </tr>
+        <tr>
+            <th>Gender: </th>
+            <td>
+                <select name="gender">
+                    <option id="genderlist">{{ customer.get_gender() }}</option>
+                    {% if customer.get_gender() == 'Female' %}
+                    <option>Male</option>
+                    {% else %}
+                    <option>Female</option>
+                    {% endif %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Birth Date: </th>
+            <td><input type="date" name="date_of_birth" value="{{ customer.get_date_of_birth() }}" /></td>
+        </tr>
+        <tr>
+            <th>Phone Number: </th>
+            <td><input type="phone number" name="phone_number" title="8 digits starting with 6, 8, 9. " placeholder="Enter your Phone Number" pattern="(6|8|9)\d{7}" value="{{ customer.get_phone_number() }}" minlength="8" maxlength="8"/></td>
+        </tr>
+    </table>
+    <button type="submit" id="submit">Update</button>
+    {% endfor %}
+</form>
+{% endblock %}
+
+

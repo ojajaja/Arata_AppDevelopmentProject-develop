@@ -1,0 +1,64 @@
+{% extends "AccountManagement/staff_management_base.html" %}
+
+{% block content %}
+<style>
+      h1{
+        padding-top: 50px;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+    table{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    table tr th{
+        font-size: 25px;
+        text-align:right;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+
+    table tr td{
+        font-size: 25px;
+        text-align:left;
+    }
+    div{
+        text-align: center;
+    }
+    #msg{
+        padding-top: 20px;
+        color: red;
+        font-size: 20px;
+    }
+    #submit{
+        font-size: 25px;
+        background-color: #6FC9E7;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 50px 10px;
+    }
+    #submit:hover{
+       background-color: blue;
+       color: white;
+    }
+    td{
+        padding-bottom: 10px;
+    }
+</style>
+<h1>Add Staff Account</h1>
+<form action="#" method="post">
+    <table>
+        <tr>
+            <th>Email Address: </th>
+            <td><input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" title="For example: john@gmail.com" placeholder="Enter your Email Address" required /></td>
+        </tr>
+        <tr>
+            <th>Password: </th>
+            <td><input type="password" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Enter Password" required></td>
+        </tr>
+    </table>
+    <br>
+    <button type="submit" id="submit">Add Staff</button>
+</form>
+{% endblock %}

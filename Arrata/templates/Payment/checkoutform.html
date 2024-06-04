@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block content %}
+<html>
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+#date{
+    width: 458px;
+    height: 40px;
+}
+h1{
+    margin-left: 40%;
+}
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+
+
+    </style>
+</head>
+<body>
+
+<h1>Checkout Form</h1>
+<div class="row">
+    <div class="col-75">
+        <div class="container">
+            <form action="checkout" method="POST">
+                <div class="row">
+                    <div class="col-50">
+                        <h3>Billing Address</h3>
+                        <label><i class="fa fa-user"></i> Full Name</label>
+                        <input class="fname" name="name" placeholder="John M. Doe" type="text" value="{{ name }}">
+                        <label><i class="fa fa-envelope"></i> Email</label>
+                        <input class="email" name="email" placeholder="john@example.com" type="text" value="{{ email }}">
+                    </div>
+
+                    <div class="col-50">
+                        <h3>Payment</h3>
+                        <label>Accepted Cards</label>
+                        <div class="icon-container">
+                            <img src="/static/images/payment.jpg">
+                        </div>
+                        <label>Credit card number</label>
+                        <input class="ccnum"  name="cardnumber" placeholder="1111-2222-3333-4444" type="text" value="{{ card_number }}">
+                        <label>CVV</label>
+                        <input class="cvv"  name="cvv" placeholder="123" type="text" value="{{ cvv }}">
+                        <label>Expiry Date</label>
+                        <input class="expdate" name="expdate" id='date' type="date" value="{{ expired_date }}">
+                    </div>
+                </div>
+                <label>
+                    <input checked="checked" name="sameadr" type="checkbox"> Shipping address same as billing
+                </label>
+                <input class="btn" type="submit" id="submit" value="Continue to checkout"/>
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+</body>
+</html>
+{% endblock %}

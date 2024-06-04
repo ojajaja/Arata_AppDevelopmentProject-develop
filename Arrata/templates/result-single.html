@@ -1,0 +1,29 @@
+{% block content %}
+<style>
+    .yeet{
+        font-size: 50px;
+
+
+    }
+
+    .background-image{
+        background-image: url('static/images/ganyu.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 200vh;
+    }
+
+</style>
+{% for x in result_list %}
+
+<div class="yeet">
+    <div class="background-image">
+        You got
+        <span class="the_result">{{ x }}</span>
+    </div>
+    <a href="/summon">Back</a>
+</div>
+
+{% endfor %}
+
+{% endblock %}

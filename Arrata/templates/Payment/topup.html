@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style xmlns="http://www.w3.org/1999/html">
+    h1{
+        padding-top: 50px;
+        text-align: center;
+    }
+
+    table{
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    table tr th{
+        font-size: 25px;
+        text-align:center;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+
+    table tr td{
+        font-size: 25px;
+        text-align:left;
+    }
+    div{
+        text-align: center;
+    }
+    #edit{
+        font-size: 25px;
+        background-color: #6FC9E7;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 50px 10px;
+    }
+    #edit:hover{
+       background-color: blue;
+       color: white;
+    }
+
+    #addCreditcard{
+        font-size: 25px;
+        background-color: #6FC9E7;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 50px 10px;
+    }
+
+    #addCreditcard:hover{
+       background-color: blue;
+       color: white;
+    }
+
+    #topup{
+        appearance: none;
+      background-color: #2ea44f;
+      border: 1px solid rgba(27, 31, 35, .15);
+      border-radius: 6px;
+      box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      padding: 6px 16px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: middle;
+      white-space: nowrap;
+      top: 20px;
+    }
+
+    #removecreditcard{
+        font-size: 25px;
+        background-color: #6FC9E7;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 50px 10px;
+    }
+
+    #topup:hover{
+       background-color: blue;
+       color: white;
+    }
+    #removecreditcard:hover{
+        background-color: blue;
+       color: white;
+    }
+
+    div{
+        text-align: center;
+    }
+
+    input[type=number] {
+  width: 50%;
+  padding: 10px 15px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #555;
+  outline: none;
+
+</style>
+<h1 class="display-4">Top Up Page</h1>
+<form action="/aratapay" method="post">
+   <div>
+      <table>
+         <tr>
+            <th>Credit Card Number: ************{{ find_last_four_digit }}</th>
+         </tr>
+         <tr>
+            <th>Current Arata Balance: ${{ balance }}</th>
+         </tr>
+         <tr>
+            <th>How Much Would you like to top up ?</th>
+         </tr>
+         <tr>
+            <th>S$<input type="number" id = "amount" name="amount" step="0.01"></th>
+         </tr>
+      </table>
+
+
+      <button id = "topup">Top up</button>
+
+   </div>
+</form>
+{% endblock %}

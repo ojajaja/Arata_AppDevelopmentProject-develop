@@ -1,0 +1,75 @@
+{% extends "AccountManagement/staff_management_base.html" %}
+
+{% block content %}
+<style>
+    h1{
+        padding-top: 50px;
+        text-align: center;
+    }
+
+    table{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    table tr th{
+        font-size: 25px;
+        text-align:right;
+        padding-right: 10px;
+    }
+
+    table tr td{
+        font-size: 25px;
+        text-align:left;
+    }
+    .upload{
+        font-size: 25px;
+        background-color: #6FC9E7;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 50px 10px;
+    }
+    .upload:hover{
+       background-color: blue;
+       color: white;
+    }
+    div{
+        text-align: center;
+    }
+    #msg{
+        color: red;
+    }
+</style>
+<h1>Profile Detail</h1><br>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<p id="msg">{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div>
+    {% for staff in staff_list %}
+    <img src="{{ url_for('staff_display_image', profile=profile) }}">
+    <table>
+        <tr>
+            <th>Staff ID: </th>
+            <td>{{ staff.get_staff_id() }}</td>
+        </tr>
+        <tr>
+            <th>Email: </th>
+            <td>{{ staff.get_email() }}</td>
+        </tr>
+        <tr>
+            <th>Date Added: </th>
+            <td>{{ staff.get_date_added() }}</td>
+        </tr>
+    </table>
+    <a href="/staff_upload_image">
+        <button class="upload">
+            Upload Avatar
+        </button>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

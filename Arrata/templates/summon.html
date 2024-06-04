@@ -1,0 +1,131 @@
+{% extends "home.html" %}
+{% block title %}Arata{% endblock %}
+
+{% block content %}
+
+<style>
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+.nav1{
+padding: 10px 0;
+font-family: 'Poppins', sans-serif;
+border-style: none;
+background-color: #dedede;
+}
+
+.nav1-container{
+    max-width:900px;
+    display:block;
+    margin-left:190px;
+    }
+
+.nav1-row{
+    display: flex;
+    flex-wrap: wrap;
+    }
+
+.nav-col{
+    width: 25%;
+    padding: 0 25px;
+    }
+
+.nav-col a{
+    font-size:18px;
+    color: black;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+    text-decoration: none;
+    }
+
+.nav-col a:hover{
+opacity: 0.5;
+}
+
+.background-image{
+   background-image: url('static/images/New Background.png');
+   background-size: cover;
+   background-repeat: no-repeat;
+   height: 100vh;
+
+
+}
+
+body{
+background-color: #dedede;
+}
+
+.img{
+display: block;
+width: 900px;
+height: 400px;
+}
+
+.banner{
+margin-left: 130px;
+}
+
+.button-64{
+font-size: 30px;
+text-decoration: none;
+border-style: groove;
+border-color: orange;
+margin-left: 40px;
+color: orange;
+padding-left: 10px;
+padding-right: 10px;
+padding-top: 10px;
+padding-bottom: 5px;
+}
+
+.my_voucher{
+margin-top: 25px;
+}
+
+.button-64:hover{
+background-color: white;
+}
+
+</style>
+<div class="nav1">
+    <div class="nav1-container">
+        <div class="nav1-row">
+            <div class="nav-col">
+                <a href="/my_voucher">My Voucher</a>
+            </div>
+
+            <div class="nav-col">
+                <a href="/summon">Summon</a>
+            </div>
+
+            <div class="nav-col">
+                <a href="/exchange_shop">Exchange Shop</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<h1 style="text-align: left;">Arata Summon</h1>-->
+<div class="container">
+    <div class="background-image">
+    <div class="banner">
+    <div class="'image">
+        <img class="img" alt="" src="{{url_for('static',filename = 'images/lucky draw.png')}}">
+    </div>
+
+        <div class="my_voucher">
+    <a href="/singlesummon"  class="button-64"><span>Single</span></a>
+
+    <a href="/MultiSummon"  class="button-64"><span>Multi</span></a>
+        </div>
+
+
+
+</div>
+</div>
+
+
+</div>
+{% endblock %}

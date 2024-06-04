@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arata</title>
+    <style>
+        *{
+        margin: 0;
+        padding: 0;
+        }
+
+        html, body{
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+{% block navbar %}
+{% include 'includes/staff_navbar.html' %}
+{% endblock %}
+
+<div class="content">
+    {% block content %}
+
+    {% endblock %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% block content %}
+
+<style>
+    .yeet{
+        font-size: 50px;
+
+
+    }
+
+    .background-image{
+        background-image: url('static/images/ganyu.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 200vh;
+    }
+
+    .point-color {
+        color: red;
+    }
+</style>
+<div class="yeet">
+    <div class="background-image">
+    You got
+    <br>
+    {% for x in result_list%}
+    {{ x }}
+    <br>
+    {% endfor %}
+    <br>
+    Total Points received:
+    <span class="point-color">{{ total_points }}</span>
+    <br>
+    <a href="/summon">Back</a>
+    <br>
+    </div>
+</div>
+
+{% endblock %}

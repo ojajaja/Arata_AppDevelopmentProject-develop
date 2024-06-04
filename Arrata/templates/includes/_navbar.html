@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Arata</title>
+
+<style media="screen">
+    /* Style the header with a grey background and some padding */
+    .header {
+      overflow: hidden;
+      background-color: white;
+      padding: 10px 20px;
+      font-family: Arial;
+      border-style: groove;
+    }
+
+    /* Style the header links */
+    .header a {
+      float: left;
+      color: black;
+      text-align: center;
+      padding: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 25px;
+      border-radius: 4px;
+    }
+
+    /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+    .header a.logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    /* Change the background color on mouse-over */
+    .header a:hover {
+      background-color: #CDEAF7;
+      color: black;
+      text-decoration: none;
+    }
+
+    /* Float the link section to the right */
+    .header-right {
+      padding-right: 13px;
+      float: right;
+      margin-top: 30px;
+    }
+
+    .header-left .logo {
+      float: left;
+    }
+
+    .header-left .item-left {
+      float: left;
+      margin-top: 30px;
+    }
+
+
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+      font-size: 17px;
+      border: none;
+      outline: none;
+      color: black;
+      padding: 18px 18px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
+
+    .dropdown_content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+    }
+
+    .dropdown_content a {
+      float: none;
+      color: black;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown:hover .dropbtn {
+      background-color: #CDEAF7;
+      color: black;
+    }
+
+    .dropdown_content a:hover {
+      background-color: #CDEAF7;
+      color: black;
+    }
+
+    .dropdown:hover .dropdown_content {
+      display: block;
+    }
+
+
+    #cart{
+        width: 25px;
+        height: 26px;
+    }
+    #logo{
+        width: 90px;
+        height: 90px;
+    }
+
+    #staff_signin_btn {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 75px;
+    }
+
+    #staff_signin_btn a {
+      float: none;
+      color: black;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    #staff_signin_btn a:hover {
+      background-color: #CDEAF7;
+      color: black;
+    }
+
+    .dropdown:hover #staff_signin_btn {
+      display: block;
+    }
+
+
+    /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+    @media screen and (max-width: 900px) {
+      .header a {
+        float: none;
+        display: block;
+        text-align: left;
+      }
+
+      .header-right {
+        padding-right: 13px;
+        float: none;
+      }
+
+      .header-left {
+        float: none;
+      }
+
+      .dropdown {
+        float: none;
+      }
+
+      .dropdown_content {
+        position: relative;
+      }
+
+      #staff_signin_btn {
+        position: relative;
+      }
+
+      .dropdown .dropbtn {
+        display: block;
+        width: 100%;
+        text-align: left;
+      }
+    }
+  </style>
+
+
+  <div class="header">
+    <div class="header-left">
+      <a class ='logo' href="/home"><img src="static/images/Arata Logo.jpeg" id="logo"></a>
+      <div class="item-left">
+      <a href="/home">Home</a>
+      <a href="/about">About</a>
+        <a href="/don">Menu</a>
+<!--      <div class="dropdown">-->
+<!--        <button class="dropbtn">Menu</button>-->
+<!--        <div class="dropdown_content">-->
+<!--          <a href="/don">Don</a>-->
+<!--          <a href="/drinks">Drinks</a>-->
+<!--          <a href="/sashimi">Sashimi</a>-->
+<!--        </div>-->
+<!--      </div>-->
+      {% if loggedin %}
+        <a href="/my_voucher">Vouchers</a>
+<!--      <div class="dropdown">-->
+<!--            <button class="dropbtn">Vouchers</button>-->
+<!--            <div class="dropdown_content">-->
+<!--                <a href="/my_voucher">My Voucher</a>-->
+<!--                <a href="/summon">Summon</a>-->
+<!--                <a href="/exchange_shop">Exchange Shop</a>-->
+<!--            </div>-->
+<!--        </div>-->
+      {% endif %}
+      <a href="/queue">Queue</a>
+      <a href="/contactUs">Contact Us</a>
+
+    </div>
+      </div>
+    <div class="header-right">
+      <a href="/cart" >
+        <img src="static/images/shopping-cart.png" alt="Cart" id="cart">
+
+      </a>
+      <div class="dropdown">
+        {% if loggedin %}
+        <button class="dropbtn">Customer Details</button>
+          <div class="dropdown_content">
+            <a href="/customer_profile">Profile</a>
+            <a href="/customer_change_password">Change Password</a>
+            <a href="/aratapay">Arata Pay</a>
+          </div>
+          {% else %}
+        <button class="dropbtn">Signin/Signup</button>
+          <div class="dropdown_content">
+            <a href="/customer_signin_signup">Customer</a>
+            <a href="/staff_signin">Staff</a>
+          </div>
+          {% endif %}
+      </div>
+      {% if loggedin %}
+            <a href="/customer_logout">Logout</a>
+      {% endif %}
+
+
+    </div>
+  </div>
+</html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<style>
+    .About{
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    h1, p{
+        text-align: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+
+    }
+    #image{
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<h1>About Us</h1>
+<div class="About">
+    <P>Arata was established in 1963 in Japan. In 2018, we opened our first outlet in Central Business District. In 2019, we open the second outlet at Dempsey Rd. Here at Arata, we aim to provide all our customers an experience that's worth remembering. </P>
+    <img id="image" src="static/images/Background/chef.jpeg"/>
+</div>
+{% endblock %}

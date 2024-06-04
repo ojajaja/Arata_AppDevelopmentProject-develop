@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}Confirmation Page{% endblock %}
+
+{% block content %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation Page</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        #table2{
+            font-size: 20px;
+            margin-left: 70%;
+        }
+        .right{
+            text-align: right;
+            padding-right: 10px;
+            padding-bottom: 10px;
+            font-weight: bold;
+        }
+        #table1 td{
+            text-align: center;
+        }
+        #table1{
+            font-size: 30px;
+            margin-left: 40%;
+        }
+         #table1 th{
+            padding-right: 10px;
+        }
+        .submit {
+        border: 0;
+        margin-top: 30px;
+        margin-left: 80%;
+        padding: 6px 25px;
+        background-color: #6b6;
+        font-size: 25px;
+        border-radius: 3px;
+    }
+
+    .submit:hover {
+        background-color: #494;
+    }
+    </style>
+</head>
+<body>
+<h1>Confirmation Page</h1>
+
+<div class="confirmation_page">
+    <table id="table1">
+        <tr>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        {% for item in bag %}
+        <tr>
+            <td>{{ item['item_name'] }}</td>
+            <td>{{ item['item_quantity'] }}</td>
+            <td>${{ item['item_price'] }}</td>
+        {% endfor %}
+        </tr>
+    </table>
+
+    <table id="table2">
+        <tr>
+            <td class="right">Total Amount:</td>
+            <td>${{ total }}</td>
+        </tr>
+        <tr>
+            <td class="right">Email:</td>
+            <td>{{ email }}</td>
+        </tr>
+        <tr>
+            <td class="right">Name:</td>
+            <td>{{ name }}</td>
+        </tr>
+        <tr>
+            <td class="right">Credit Card Number:</td>
+            <td>{{ cardnumber }}</td>
+        </tr>
+        <tr>
+            <td class="right">CVV:</td>
+            <td>{{ cvv }}</td>
+        </tr>
+        <tr>
+            <td class="right">Credit Card Expiry Date:</td>
+            <td>{{ expiry_date }}</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
+{% endblock %}

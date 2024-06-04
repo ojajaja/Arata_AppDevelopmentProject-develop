@@ -1,0 +1,7 @@
+flask
+click
+wtforms
+flask_mail
+
+
+

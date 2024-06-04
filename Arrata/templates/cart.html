@@ -1,0 +1,329 @@
+{% extends "base.html" %}
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+<script>
+    function removeFromCart(productId) {
+        fetch(`http://127.0.0.1:5000/remove/${productId}`,
+            {method: 'POST'}
+        )
+        .then(response => response.json())
+        .then(data =>
+        {
+            if (data == 0)
+            {
+                document.getElementById(`${productId}_row`).remove()
+            }
+            else
+            {
+                document.getElementById(`${productId}_quantity`).textContent = data
+            }
+
+            if (document.getElementById(`table`).length == 0)
+            {
+                console.log("table is empty")
+            }
+        })
+    }
+
+    // function addToCart(productId) {
+    //     fetch(`http://127.0.0.1:5000/add/${productId}`,
+    //         {method: 'POST'}
+    //     )
+    //     .then(response => response.json())
+    //     .then(data =>
+    //     {
+    //         document.getElementById(`${productId}_quantity`).textContent = data
+    //     })
+    // }
+
+
+    async function updateQuantity(productId, quantity) {
+        await fetch(`http://127.0.0.1:5000/updateQuantity/${productId}/${quantity}`,
+            {method: 'POST'}
+        )
+        .then(response => response.json())
+        .then(data =>
+            {
+                document.getElementById(`${productId}_item_total`).textContent = `$${data['total']}`
+                if (quantity == 0)
+                {
+                    document.getElementById(`${productId}_row`).remove()
+                }
+            }
+        )
+
+        updateOverview()
+    }
+
+    async function updateVoucher(Value) {
+        console.log(Value)
+        await fetch(`http://127.0.0.1:5000/add_voucher/${Value}`,
+            {method: 'POST'}
+        )
+        
+
+        updateOverview()
+    }
+    
+
+    function updateOverview() {
+        fetch(`http://127.0.0.1:5000/cart/update`,
+            {method: 'GET'}
+        )
+        .then(response => response.json())
+        .then(data => {
+            
+            document.getElementById(`cart-subtotal`).textContent = `$${data['subtotal']}`
+            document.getElementById(`cart-tax`).textContent = `$${data['gst']}`
+            document.getElementById(`cart-taxs`).textContent = `$${data['service_charge']}`
+            document.getElementById(`cart-total`).textContent = `$${data['total']}`
+            
+        })
+    }
+
+    // function updateTotals(productId, quantity) {
+    //     fetch(`http://127.0.0.1:5000/cart/update`,
+    //         {method: 'POST'}
+    //     )
+    //     .then(response => response.json())
+    //     .then(data =>
+    //         {
+    //             console.log(data)
+                // document.getElementById(`${productId}_item_total`).textContent = `$${data['total']}`
+                // var subtotal = 0;
+  
+                // // Sum up row totals
+                // $('.product').each(function () {
+                //     subtotal += parseFloat($(this).children('.product-line-price').text());
+                // });
+                
+                // // Update totals display
+                // $('.totals-value').fadeOut(fadeTime, function() {
+                //     $('#cart-subtotal').html(subtotal.toFixed(2));
+                //     $('#cart-tax').html(gst.toFixed(2));
+                //     $('#cart-taxs').html(sc.toFixed(2));
+                //     $('#cart-shipping').html(shipping.toFixed(2));
+                //     $('#cart-total').html(total.toFixed(2));
+                //     if(total == 0){
+                //     $('.checkout').fadeOut(fadeTime);
+                //     }else{
+                //     $('.checkout').fadeIn(fadeTime);
+                //     }
+                //     $('.totals-value').fadeIn(fadeTime);
+                // });
+        //         }
+        // }
+
+</script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;0,800;1,300&display=swap');
+    h1, p{
+        text-align: center
+    }
+    h1 {
+        font-size: 50px;
+    }
+
+    .Cart {
+        text-align: center;
+    }
+    table {
+        border:none;
+        margin-left:auto;
+        margin-right:auto;
+        border:none;
+        margin-left:auto;
+        margin-right:auto;
+        font-size: 35px;
+        background-color: #dedede;
+    }
+
+    td {
+      text-align: center;
+    }
+
+    .removeButton {
+        border: none;
+        background-color: #f44336;
+        color: white;
+        padding: 5px;
+    }
+
+    .removeButton:hover {
+      background-color: #CE2029;
+    }
+
+    .input[type="number"]
+    {
+        font-size:20px;
+    }
+
+    .input {
+        text-align: center;
+        width: 20%;
+    }
+
+    .all {
+        font-family: 'Poppins', sans-serif;
+        margin-top: 50px;
+    }
+
+    .lol{
+        
+        width: 50%;
+        float: left;
+        font-size: 30px;
+        margin-left: 100px;
+    }
+
+    .totals{
+        
+        overflow: hidden;
+        font-size: 40px;
+        padding-top: 10px;
+        
+    }
+
+    
+    
+    .totals-item label {
+        /* padding-left: 300px; */
+        display:inline-block;
+        padding-top: 10px;
+        color: #d3d3d3;
+
+    }
+    .totals-item .totals-value{
+        float: right;
+        padding-right: 10px;
+    }
+    
+    .checkout {
+        float: right;
+        margin-right: 10px;
+        font-size: 40px;
+        margin-top: 10px;
+        background-color: #6b6;
+        border-style: groove;
+        border-radius: 5px;
+
+    }
+
+    .checkout a {
+        text-decoration: none;
+        background-color: #6b6;
+        padding: 10px 20px;
+        text-align: center;
+        display: inline-block;
+        color: white;
+
+    }
+
+    .checkout a:hover {
+        background-color: #494;
+    }
+   
+    .voucherbutton {
+        text-decoration: none;
+        background-color: white;
+        border: 2px solid green;
+        padding: 10px 20px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 5px;
+        font-size: 30px;
+        margin-top: 10px;
+    }
+
+    
+
+    
+    
+
+</style>
+<h1>Cart</h1>
+<div class="Cart">
+    <table cellspacing="4" cellpadding="4" id="table">
+        {% if not cart|length %}
+        <p hidden id="emptycartnotice">Cart is currently empty. Go to Menu</p>
+        {% else %}
+        <tr>
+            <th width="20%">Item Name</th>
+            <th width="10%">Quantity</th>
+            <th width="10%">Price</th>
+            <th width="20%">Delete</th>
+        </tr>
+        {% for item in cart %}
+        <tr id="{{item.id}}_row">
+            <td>{{item.item_name}}</td>
+            <td>
+                <div>
+                    <input type="number" class="input" id="{{item.id}}_quantity_input" value={{ item.item_quantity }}
+                           onchange="updateQuantity({{ item.id }}, this.value)" min="1">
+                </div>
+            </td>
+            <td id="{{item.id}}_item_total">${{ (item.item_quantity * item.item_price)|round(2) }}</td>
+            <td>
+                <button onclick="updateQuantity({{ item.id }}, 0)" id="{{ item.id }}_button" type="button"
+                        class="removeButton">
+                    Remove from Cart
+                </button>
+            </td>
+            {% endfor %}
+            {% endif %}
+        </tr>
+    </table>
+    
+    
+</div>
+<div class="all">
+    {% if customer_id > 0 %}
+        <div class="lol">
+            <form name="passdata" action="." method="post">
+                <label class="noth">
+                    Vouchers Available:
+                </label><br>
+                {% for final in final %}
+                <button onClick="updateVoucher({{ final[2] }})" type="button" class="voucherbutton">{{ final[0] }} </button><br>
+                {% endfor%}
+            </form>
+        </div>
+
+
+    {% endif %}
+<div class="totals">
+    
+    <div class="totals-item">
+        <label><b>Subtotal</b></label>
+        <div class="totals-value" id="cart-subtotal">${{ overview.subtotal }}</div>
+    </div>
+    <div class="totals-item">
+        <label><b>GST (7%)</b></label>
+        <div class="totals-value" id="cart-tax">${{ overview.gst }}</div>
+    </div>
+    <div class="totals-item">
+        <label><b>Service Charge (10%)</b></label>
+        <div class="totals-value" id="cart-taxs">${{ overview.service_charge }}</div>
+    </div>
+    {% if customer_id > 0 %}
+    <div class="totals-item">
+        <label><b>Discount Given</b></label>
+        <div class="totals-value" id="cart-taxs">${{ overview.discount }}</div>
+    </div>
+    {% endif %}
+    <div class="totals-item">
+        <div class="totals-item totals-item-total">
+            <label><b>Grand Total</b></label>
+            <div class="totals-value" id="cart-total">${{ overview.total }}</div>
+        </div>
+    </div>
+</div>
+<button class="checkout">
+    <a href="/checkout">Checkout</a>
+</button>
+</div>
+
+
+{% endblock %}

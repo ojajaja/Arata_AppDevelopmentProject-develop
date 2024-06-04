@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %}Arata{% endblock %}
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Supermercado+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comforter&family=Poppins:wght@300;400;500;600;700&family=Supermercado+One&display=swap');
+.center{
+
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+.reservation{
+text-align: center;
+background-color: white;
+margin-left: 164px;
+margin-right: 164px;
+font-size: 18px;
+font-family: Monaco, Monospace;
+}
+
+.thebody{
+background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+background-size: 400% 400%;
+animation: gradient 15s ease infinite;
+height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.reservation h2{
+padding-top: 50px;
+padding-bottom: 20px;
+text-decoration: underline;
+
+
+}
+
+.reservation p{
+padding-top: 15px;
+}
+
+.close{
+padding-bottom: 70px;
+}
+
+.center_text {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size:55px;
+  color: black;
+  background-color: white;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Supermercado One', cursive;
+
+ }
+
+.desc{
+
+font-size: 25px;
+font-family: 'Comforter', cursive;
+margin-left: 170px;
+
+}
+
+
+</style>
+<body class="thebody">
+
+<div id="slider">
+    <figure>
+        <img src="static/images/Slide Show/food 1.jpg" class="center">
+        <div class="center_text">
+            Welcome to Arata<br>
+            <p class="desc">Best Food, Good Food</p>
+
+        </div>
+    </figure>
+
+</div>
+
+<div class="reservation">
+    <h2>Reservations</h2>
+    <p>Wednesday | Thursday | Sunday : 5.30 - 9.30 PM</p>
+    <p>Friday & Saturday : 5.00 - 10.00 PM</p>
+    <p>Sunday Lunch : 12.30 - 1.30 PM</p>
+    <p class="close">Closed Monday & Tuesday</p>
+
+</div>
+
+
+
+
+
+</body>
+{% endblock %}
+

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    h1{
+        padding-top: 50px;
+        text-align: center;
+    }
+
+    table{
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    table tr th{
+        font-size: 25px;
+        text-align:right;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+
+    table tr td{
+        font-size: 25px;
+        text-align:left;
+    }
+    div{
+        text-align: center;
+    }
+    .edit{
+        font-size: 25px;
+        background-color: #6FC9E7;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 50px 10px;
+    }
+    .edit:hover{
+       background-color: blue;
+       color: white;
+    }
+    .upload{
+        font-size: 25px;
+        background-color: #6FC9E7;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 50px 10px;
+    }
+    .upload:hover{
+       background-color: blue;
+       color: white;
+    }
+    img{
+        width: 10%;
+        height: 10%;
+    }
+     #msg{
+        color: red;
+        text-align: center;
+    }
+</style>
+<h1>Profile Detail</h1><br>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<p id="msg">{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div>
+    {% for customer in customer_list %}
+    <img src="{{ url_for('display_image', profile=profile) }}">
+    <table>
+        <tr>
+            <th>Customer ID: </th>
+            <td>{{customer.get_customer_id() }}</td>
+        </tr>
+        <tr>
+            <th>Email: </th>
+            <td>{{ customer.get_email() }}</td>
+        </tr>
+        <tr>
+            <th>Name: </th>
+            <td>{{ customer.get_name() }}</td>
+        </tr>
+        <tr>
+            <th>Gender: </th>
+            <td>{{ customer.get_gender() }}</td>
+        </tr>
+        <tr>
+            <th>Date of Birth: </th>
+            <td>{{ customer.get_date_of_birth() }}</td>
+        </tr>
+        <tr>
+            <th>Phone Number: </th>
+            <td>{{ customer.get_phone_number() }}</td>
+        </tr>
+    </table>
+    <a href="/edit_customer_information">
+        <button class="edit">
+            Edit
+        </button>
+    </a>
+    <br>
+    <br>
+    <a href="/upload_image">
+        <button class="upload">
+            Upload Avatar
+        </button>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

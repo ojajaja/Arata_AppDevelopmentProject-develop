@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="static/images/Arata Logo.jpeg">
+    <style>
+        *{
+        margin: 0;
+        padding: 0;
+        }
+
+        html, body{
+            height: 100%;
+        }
+
+        .content{
+            min-height: 100%;
+            overflow: auto;
+            padding-bottom: 100px;
+        }
+
+    </style>
+</head>
+
+<body>
+    {% block navbar %}
+     {% include 'includes/_navbar.html' %}
+    {% endblock %}
+
+    <div class="content">
+            {% block content %}
+
+            {% endblock %}
+    </div>
+
+    {% block footer %}
+    {% include 'includes/_footer.html' %}
+    {% endblock %}
+
+</body>
+</html>

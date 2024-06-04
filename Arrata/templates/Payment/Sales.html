@@ -1,0 +1,174 @@
+{% extends "AccountManagement/staff_management_base.html" %}
+{% block content %}
+<style>
+
+        #box1 {
+            float:left;
+            width:500px;
+            height:160px;
+            background-color:white;
+            border:solid black;
+            text-align: center;
+            font-size: 40px;
+            background-color: #6FC9E7;
+            margin-left:20px;
+
+        }
+        #box2 {
+            float:left;
+            width:500px;
+            height:160px;
+            background-color:white;
+            border:solid black;
+            text-align: center;
+            font-size: 40px;
+            background-color: #6FC9E7;
+        }
+        h1 {
+            color:black;
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        #chart{
+            margin-top: 50px;
+            margin-left: 10%;
+        }
+
+        .button {
+          background-color: #e7e7e7;
+          border: none;
+          color: black;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          float: right;
+        }
+
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<h1>Sales Dashboard</h1>
+
+
+<div id="chart">
+    <h2>Number of Customers Chart</h2>
+    <canvas id="myChart1" style="width:100%;max-width:600px"></canvas>
+</div>
+
+<div class='container'>
+    <div class='row'>
+        <div class="col md-12">
+            <div class='jumbotron p-3'>
+                <h2>Manage <b>Sales</b>
+                    <button class="button">Add Sale +</button>
+                </h2>
+
+
+                <table class="table table-hover table-dark">
+                    <tr>
+                        <th>Date</th>
+                        <th>Dine in</th>
+                        <th>Take Away</th>
+                        <th>Total Sales</th>
+                    </tr>
+                    <tr>
+                        <td>14 Feb 2022</td>
+                        <td>$4628.20</td>
+                        <td>$1,690.32</td>
+                        <td>$6,318.52</td>
+                      </tr>
+                      <tr>
+                        <td>13 Feb 2022</td>
+                        <td>$9,890.20</td>
+                        <td>$4,300.10</td>
+                        <td>$1,4190.30</td>
+                      </tr>
+                      <tr>
+                        <td>12 Feb 2022</td>
+                        <td>$8,291.10</td>
+                        <td>$6,942.20 </td>
+                        <td>$15233.30</td>
+                      </tr>
+                      <tr>
+                        <td>11 Feb 2022</td>
+                        <td>$9,620.20</td>
+                        <td>$3,214.10</td>
+                        <td>$1,2834.30</td>
+                      </tr>
+                      <tr>
+                        <td>10 Feb 2022</td>
+                        <td>$3,741.10</td>
+                        <td>$1,419.20 </td>
+                        <td>$5,160.30</td>
+                      </tr>
+                      <tr>
+                        <td>9 Feb 2022</td>
+                        <td>$6,920.20</td>
+                        <td>$3,110.10</td>
+                        <td>$10,030.30</td>
+                      </tr>
+                      <tr>
+                          <td><font color="#069d3a">Load More</font></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                      </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+                <script>
+    var xValues = ['09/2021', '10/2021', '11/2021', '12/2021', '1/2022', '2/2022'];
+    var yValues = [20, 100, 150, 160, 170, 5];
+
+
+new Chart("myChart1", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,0.1)",
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      xAxes: [{
+            gridLines: {
+                display:false
+            }
+        }],
+        yAxes: [{
+            gridLines: {
+                display:false
+            }
+        }]
+    },
+    hover: 
+       {mode:null},
+    tooltips:
+    {enabled: false}
+  }
+});
+</script>
+
+{% endblock %}

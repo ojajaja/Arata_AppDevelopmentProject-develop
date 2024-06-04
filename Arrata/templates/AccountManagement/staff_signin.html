@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+{% block title %}Arata{% endblock %}
+
+{% block content %}
+<style>
+    #title{
+        text-align: center;
+        padding-top: 30px;
+    }
+    #msg{
+        color: red;
+        text-align: center;
+    }
+
+    .space {
+      margin-left: 20%;
+      margin-right: 20%;
+      width: 50%;
+      padding: 100px;
+    }
+
+    .container * {
+      box-sizing: border-box;
+    }
+
+    .container h1 {
+      font-weight: bold;
+    }
+
+    .container a {
+      color: #333;
+      font-size: 14px;
+      text-decoration: none;
+      margin: 15px;
+    }
+
+    .container button {
+      border-radius: 20px;
+      border: 1px solid blue;
+      background-color: blue;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 12px 45px;
+    }
+
+    .container button:focus {
+      outline: none;
+    }
+
+    .container button.hidden {
+      background-color: transparent;
+      border-color: #FFFFFF;
+    }
+
+    .container form {
+      background-color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 50px;
+      height: 100%;
+      text-align: center;
+    }
+
+    .container input {
+      font-family: Arial;
+      background-color: #eee;
+      border: none;
+      padding: 12px 15px;
+      margin: 8px;
+      width: 100%;
+    }
+
+    .container select {
+      font-family: Arial;
+      background-color: #eee;
+      border: none;
+      padding: 12px 15px;
+      margin: 8px;
+      width: 100%;
+    }
+    .container #date {
+      font-family: Arial;
+      background-color: #eee;
+      border: none;
+      padding: 20px 15px;
+      margin: 8px;
+      width: 100%;
+
+    }
+
+    .container {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+      position: relative;
+      width: 768px;
+      min-height: 600px;
+      overflow: hidden;
+    }
+
+    .form-container {
+      position: absolute;
+      height: 100%;
+      transition: all 0.6s ease-in-out;
+    }
+
+    .signin-container {
+      width: 50%;
+      z-index: 2;
+    }
+
+    .container.right-panel-active .signin-container {
+      transform: translateX(100%);
+    }
+
+    .signup-container {
+      width: 50%;
+      z-index: 1;
+    }
+
+    .container.right-panel-active .signup-container {
+      transform: translateX(100%);
+      opacity: 1;
+      z-index: 5;
+      animation: 0.6s;
+    }
+
+
+    .overlay-container {
+      position: absolute;
+      left: 50%;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      transition: transform 0.6s ease-in-out;
+      z-index: 100;
+    }
+
+    .container.right-panel-active .overlay-container {
+      transform: translateX(-100%);
+    }
+
+    .overlay {
+      background: blue;
+      color: #FFFFFF;
+      position: relative;
+      left: -100%;
+      height: 100%;
+      width: 200%;
+      transform: translateX(0);
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .container.right-panel-active .overlay {
+      transform: translateX(50%);
+    }
+
+    .overlay-panel {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      height: 100%;
+      width: 50%;
+    }
+
+    .overlay-right {
+      right: 0;
+    }
+    td{
+        padding-right: 10px;
+    }
+  }
+</style>
+
+<h1 id="title">Staff Sign in page</h1>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<p id="msg">{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="space">
+    <div class="container" id="container">
+        <div class="form-container signin-container">
+            <form action="#" method="post">
+                <h1>Sign in</h1>
+                <input type="text" name='email' placeholder="Enter Username" required>
+                <input type="password" name='password' id="password" placeholder="Enter Password" required>
+                <table>
+                    <tr>
+                        <td><input type="checkbox" onclick="myFunction()"/></td>
+                        <td><label>Show Password</label></td>
+                    </tr>
+                </table>
+                <button>Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+                    <h1>Welcome to Arata</h1>
+                    <p>Please enter your personal details to access Arata admin page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        }
+        else {
+            x.type = "password";
+        }
+    }
+ </script>
+{% endblock %}
+

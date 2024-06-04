@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style xmlns="http://www.w3.org/1999/html">
+    h1{
+        padding-top: 50px;
+        text-align: center;
+    }
+
+    table{
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    table tr th{
+        font-size: 25px;
+        text-align:right;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+
+    table tr td{
+        font-size: 25px;
+        text-align:left;
+    }
+    div{
+        text-align: center;
+    }
+    #edit{
+        font-size: 25px;
+        background-color: #6FC9E7;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 50px 10px;
+    }
+    #edit:hover{
+       background-color: blue;
+       color: white;
+    }
+
+    #addCreditcard{
+      appearance: none;
+      background-color: #2ea44f;
+      border: 1px solid rgba(27, 31, 35, .15);
+      border-radius: 6px;
+      box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      padding: 6px 16px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: middle;
+      white-space: nowrap;
+      top: 20px;
+    }
+
+    #addCreditcard:hover{
+       background-color: #5537af;
+       color: white;
+    }
+
+    #menu-outer {
+	height: 84px;
+	background: url(images/bar-bg.jpg) repeat-x;
+}
+
+.table1 {
+	margin-left: 750px;
+	float:left;
+}
+
+.rene {
+	margin-left: 10px;
+	float:left;
+}
+
+<!--.pic2{-->
+<!--    margin-right: 100px;-->
+<!--    float:left;-->
+<!--}-->
+
+    p.a {
+  font-family: "Times New Roman", Times, serif;
+}
+</style>
+
+<img src="static/images/pay_homepage.jpeg" class="center">
+<h1 class="display-4"><font color="#069d3a">Going cashless is easy </font> <font color="#5537af"> with Aratapay</font></h1>
+<p>To get started, link your credit/debit card to <font color="5537af">Aratapay</font> No card? No problem! From now, you can use Paynow to top up your Wallet.</p>
+
+<div>
+    <a href="/addCreditcard">
+        <button id ="addCreditcard">Add Credit Card +</button>
+    </a>
+</div>
+
+
+<div>
+<h1><font color="#069d3a">What you can</font> <font color="#5537af">use Aratapay for</font></h1>
+    <div>
+
+    <ul>
+        <li>
+            <div class="table1">
+            <img src="https://cdn-icons-png.flaticon.com/128/262/262611.png" width="59" height="53">
+                <p class="a">In Store Purchases</p>
+            </div>
+
+        <li>
+            <div class="rene">
+                <img src="https://cdn-icons-png.flaticon.com/512/1280/1280690.png" width="59" height="53" class="pic2">
+                <p> Claim Voucher</p>
+            </div>
+
+        </li>
+    </ul>
+    </div>
+</div>
+
+{% endblock %}

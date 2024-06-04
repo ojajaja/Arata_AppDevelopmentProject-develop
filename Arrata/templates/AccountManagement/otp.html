@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    h1, form{
+        text-align: center;
+        padding-top: 10px;
+    }
+    #submit{
+        font-size: 25px;
+        background-color: #6FC9E7;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 50px 10px;
+    }
+    #submit:hover{
+       background-color: blue;
+       color: white;
+    }
+</style>
+<h1>OTP</h1>
+<form action="/otp" method="post">
+    <p><input type="text" name="type_otp" placeholder="Please enter the OTP" minlength="6" maxlength="6"></p><br>
+    <p><button id="submit">Submit</button></p>
+</form>
+{% endblock %}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    .footer{
+    background-color: white;
+    padding: 70px 0;
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+    border-style: groove;
+    border-color: black;
+    }
+
+    .footer-container{
+    max-width: 1170px;
+    margin:auto;
+    }
+
+    ul{ list-style:none;}
+
+    *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    }
+
+    .row{
+    display: flex;
+    flex-wrap: wrap;
+    }
+
+    .footer-col{
+    width: 25%;
+    padding: 0 15px;
+    }
+
+    .footer-col h4{
+    font-size: 18px;
+    color: black;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+    }
+
+    .footer-col h4::before{
+    content: '';
+    position: absolute;
+    left:0;
+    bottom: -10px;
+    background-color: #e91e63;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+    }
+
+    .footer-col ul li:not(:last-child){
+    margin-bottom:10px;
+    }
+
+    .footer-col ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: black;
+    text-decoration: none;
+    font-weight: 300;
+    color: black;
+    display: block;
+    transition: all 0.3s ease;
+    }
+
+    .footer-col ul li a:hover{
+    color: black;
+    padding-left: 10px;
+
+    }
+
+    .footer-col .social-links a{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.2);
+    margin-right:0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: black;
+    transition: all 0.5s ease;
+    }
+
+    .footer-col .social-links a:hover{
+    color: #24262b;
+    background-color: grey;
+    }
+
+    @media(max-width: 767px){
+    .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+    }
+    }
+
+    @media(max-width: 574px){
+    .footer-col{
+    width: 100%;
+    }
+    }
+
+
+
+</style>
+
+<div class="footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="footer-col">
+            <h4>Restaurant</h4>
+            <ul>
+                <li><a href="/contactUs">Contact Us </a></li>
+                <li><a href="/terms_and_condition">Terms and Condition </a></li>
+                <li><a href="/privacy_policy">Privacy Policy </a></li>
+                <li><a href="#">affiliate program </a></li>
+
+            </ul>
+            </div>
+            <div class="footer-col">
+            <h4>Get Help</h4>
+            <ul>
+                <li><a href="#">FAQ </a></li>
+                <li><a href="#">Delivery </a></li>
+                <li><a href="#">Order status </a></li>
+
+            </ul>
+            </div>
+            <div class="footer-col">
+            <h4>Menu</h4>
+            <ul>
+                <li><a href="/don">Don </a></li>
+                <li><a href="/drinks">Drinks </a></li>
+                <li><a href="/sashimi">Sashimi </a></li>
+
+            </ul>
+            </div>
+            <div class="footer-col">
+            <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</html>

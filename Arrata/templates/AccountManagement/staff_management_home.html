@@ -1,0 +1,54 @@
+{% extends "AccountManagement/staff_management_base.html" %}
+{% block content %}
+<style>
+
+        #box1 {
+            float:left;
+            width:500px;
+            height:160px;
+            background-color:white;
+            border:solid black;
+            text-align: center;
+            font-size: 40px;
+            background-color: #6FC9E7;
+            margin-left:20px;
+
+        }
+        #box2 {
+            float:left;
+            width:500px;
+            height:160px;
+            background-color:white;
+            border:solid black;
+            text-align: center;
+            font-size: 40px;
+            background-color: #6FC9E7;
+        }
+        h1 {
+            color:black;
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        #chart{
+            margin-top: 200px;
+            margin-left: 10%;
+        }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<h1>Admin Dashboard</h1>
+
+<div class="container">
+    <div id="box2">
+        <b>Number of Customer</b><br>
+        {{ number_of_customer }}<br>
+    </div>
+
+    <div id="box1">
+        <b>Number of Staff</b><br>
+        {{ number_of_staff }}
+    </div>
+</div>
+
+
+{% endblock %}

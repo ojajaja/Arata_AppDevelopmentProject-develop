@@ -1,0 +1,60 @@
+{% extends "base.html" %} 
+{% block title %}Not A Member{% endblock %} 
+
+{% block content %}
+<style>
+  .title {
+    font-size: 7rem;
+    color: white;
+    text-shadow: 0 0 5px black;
+  }
+
+  .wrapper {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    perspective: 10px;
+  }
+
+  header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transform-style: preserve-3d;
+    z-index: -1;
+  }
+
+  .background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+    transform: translateZ(-10) scale(2);
+  }
+
+  section {
+    font-size: 2rem;
+    padding: 2rem;
+    background-color: #333;
+    color: white;
+  }
+
+  .signup_link {
+    color: #5B7EDE;
+  }
+</style>
+
+<div class="wrapper">
+  <header>
+    <img src="static/images/Slide Show/food 2.jpg" class="background" />
+    <h1 class="title">Oops...it seems that you aren't a member.</h1>
+    <section>
+      Please proceed to pay at the counter. You can choose to sign up as a member <a href="/customer_signin_signup" class="signup_link">here</a> for your next visit.
+    </section>
+  </header>
+</div>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Arata{% endblock %}
+
+{% block content %}
+<style>
+    h1{
+      text-align: center;
+    }
+
+    .body{
+      text-align: center;
+    }
+
+    table{
+      border-collapse: collapse;
+      width: 80%;
+      margin: auto;
+      border-color: transparent;
+    }
+
+    table th{
+      text-align: right;
+    }
+
+    table td{
+      text-align: left;
+      padding-left: 20px;
+    }
+
+    #map{
+      width: 500px;
+      height: 500px;
+    }
+</style>
+<h1>Contact Us</h1>
+<div class="body">
+  <p>Phone: +65 85533 1142</p>
+  <p>Email: contact@arata.sg</p>
+  <table border="1">
+    <tr>
+      <td></td>
+      <td>Outlet 1</td>
+      <td>Outlet 2</td>
+    </tr>
+    <tr>
+      <th>Location:</th>
+      <td>10 Bayfront Ave, Singapore 018956 L1-01</td>
+      <td>8 Dempsey Rd, #01-01, Singapore 249679</td>
+    </tr>
+    <tr>
+      <th>Operating Hours:</th>
+      <td>Mon - Fri <br> 10am - 9.30pm <br>Sat - Sun & PH <br>10am - 6pm </td>
+      <td>Mon - Fri <br> 10am - 9.30pm <br>Sat - Sun & PH <br>10am - 10pm</td>
+    </tr>
+    <tr>
+      <th>Map</th>
+      <td><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8130233318598!2d103.85693761475399!3d1.2862262990618734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da190656240983%3A0x3294e5121ec3520!2s10%20Bayfront%20Ave%2C%20Singapore%20018956!5e0!3m2!1sen!2ssg!4v1638499668273!5m2!1sen!2ssg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" id="map"></iframe></td>
+      <td><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.13811928577!2d103.8097711384059!3d1.304327710584945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da1a3cb6caf793%3A0x7b124e596b6aff7c!2s8%20Dempsey%20Rd%2C%20Singapore%20247696!5e0!3m2!1sen!2ssg!4v1638499703232!5m2!1sen!2ssg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" id="map"></iframe></td>
+    </tr>
+  </table>
+</div>
+
+{% endblock %}

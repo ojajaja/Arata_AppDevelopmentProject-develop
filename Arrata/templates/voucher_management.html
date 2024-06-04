@@ -1,0 +1,91 @@
+{% extends "AccountManagement/staff_management_base.html" %}
+
+{% block content %}
+<body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<div class='container'>
+    <div class='row'>
+        <div class="col md-12">
+            <div class='jumbotron p-3'>
+                <h2>Manage <b>Vouchers</b>
+                    <a href="/createvoucher" style="float: right;" >Add New Voucher</a>
+                </h2>
+
+
+                <table class="table table-hover table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Voucher</th>
+                        <th>Details</th>
+                        <th>Value</th>
+                        <th>Price in Points</th>
+                        <th>Actions</th>
+                        <th></th>
+                    </tr>
+                    {% for voucher in voucher_list%}
+
+                    <tr>
+                        <td>{{ voucher.get_ID() }}</td>
+                        <td>{{ voucher.get_voucher() }}</td>
+                        <td>{{ voucher.get_Detail() }}</td>
+                        <td>{{ voucher.get_Value() }}</td>
+                        <td>{{ voucher.get_price_in_points() }}</td>
+
+                        <td>
+                            <a href="/updatevoucher/{{voucher.get_ID()}}" class="btn btn-warning">Update</a>
+                        </td>
+                        <td>
+                            <form action="{{url_for('delete_Voucher', id=voucher.get_ID())}}" method="POST">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#mymodal_{{voucher.get_ID()}}">
+                                Delete
+                            </button>
+
+                            <div class="modal" id="mymodal_{{voucher.get_ID()}}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" style="color: black;">Delete Confirmation</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <div class="modal-body" style="color: black;">
+                                            Are you sure you want to delete {{voucher.get_voucher()}}?
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <input type="submit" value="Delete" class="btn btn-danger">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Cancel
+                                            </button>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            </form>
+                        </td>
+                    </tr>
+
+
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+{% endblock %}

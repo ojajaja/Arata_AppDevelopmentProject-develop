@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block title %}Menu{% endblock %}
+
+{% block content %}
+<script>
+    function addToCart(productId) {
+        var doAdd = true
+        if (productId == 1)
+        {
+            if (confirm("Disclaimer: We are not held responsible for any allergies/food restrictions you might have.")) {
+                // do Add stays true
+            }
+            else {
+                doAdd = false
+            }
+        }
+
+        if (doAdd)
+        {
+            fetch(`http://127.0.0.1:5000/add/${productId}`,
+                {method: 'POST'}
+            )
+        }
+    }
+
+</script>
+
+<style>
+    h1 {
+    text-align: center
+    }
+
+    div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 300px;
+    text-align: center;
+    }
+
+    div.gallery:hover {
+    border: 1px solid #777;
+    }
+
+    div.gallery img {
+    width: 100%;
+    height: auto;
+    }
+
+    div.name {
+    padding: 15px;
+    text-align: justify;
+    }
+
+    div.price {
+    padding: 15px;
+    text-align: center;
+    }
+
+    .nav1 {
+        padding: 10px 0;
+        font-family: 'Poppins', sans-serif;
+        border-style: none;
+    }
+
+    .nav1-container {
+        max-width:900px;
+        display:block;
+        margin-left:510px;
+        
+    }
+
+    .nav1-row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .nav-col {
+        width: 25%;
+        padding: 0 25px;
+    }
+
+    .nav-col a {
+        font-size:18px;
+        color: black;
+        text-transform: uppercase;
+        margin-bottom: 35px;
+        font-weight: 500;
+        position: relative;
+        text-decoration: none;
+    }
+
+    .nav-col a:hover {
+        opacity: 0.5;
+    }
+    
+    #image{
+        width: 200px;
+        height: 200px;
+    }
+    
+</style>
+
+<div class="nav1">
+    <div class="nav1-container">
+        <div class="nav1-row">
+            <div class="nav-col">
+                <a href="/don">Don</a>
+            </div>
+
+            <div class="nav-col">
+                <a href="/drinks">Drinks</a>
+            </div>
+
+            <div class="nav-col">
+                <a href="/sashimi">Sashimi</a>
+            </div>
+        </div>
+    </div>
+</div>
+<h1>{{ title }}</h1>
+<div class="Title">
+    {% for item in items %}
+    <div class="gallery">
+        <img id="image" src="{{ item.item_picture_path }}"/>
+        <h3 class="name">{{ item.item_name }}</h3>
+        <div class="price">{{ item.item_price }}</div>
+        <button onclick="addToCart({{ item.id }})" id="{{item.id}}_button" type="button" class="btn btn-primary">
+            Add to Cart
+        </button> 
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends "AccountManagement/staff_management_base.html" %}
+
+{% block content %}
+<head>
+    <link crossorigin="anonymous"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+          rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js"></script>
+    <style media="screen">
+        h1{
+            padding-top: 30px;
+        }
+        div p, h1{
+            text-align: center;
+            padding-bottom: 30px;
+        }
+        #msg{
+            color:red;
+        }
+        .btn-red{
+            background-color: #FF0000;
+            border: none;
+                        padding: 10px 10px 10px 10px;
+
+            border-radius: 10px;
+        }
+        .btn-blue{
+            background-color: #6FC9E7;
+            border-radius: 10px;
+            padding: 10px 10px 10px 10px;
+            border: none;
+            text-decoration: none;
+            color: black;
+        }
+        .btn-blue:hover{
+            color: black;
+        }
+        .space{
+            padding-left: 10px;
+        }
+        a{
+            text-decoration: none;
+            color: black
+        }
+        a:hover{
+            text-decoration: none;
+            color: black
+        }
+
+
+    </style>
+</head>
+<h1 class="display-4">Staff Account Management</h1>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<p id="msg">{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div>
+    <p>Search Staff ID: <span class="space"/></id><input id="staff_id" onkeyup="staffid()"
+                                                         placeholder="Search for Staff ID"
+                                                         type="text"><span class="space"/><a
+            class="btn-blue" href="/add_staff_account">Add Staff</a></p>
+
+    <table class="table table-striped" id="table">
+        <thead>
+        <tr>
+            <th>Staff ID</th>
+            <th>Email</th>
+            <th>Date Added</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for staff in staff_list %}
+        <tr>
+            <td>{{ staff.get_staff_id() }}</td>
+            <td>{{ staff.get_email() }}</td>
+            <td>{{ staff.get_date_added() }}</td>
+            <td>
+                <button class="btn-blue" id="update_css"><a href="/update_staff_account/{{staff.get_staff_id()}}"/>Update
+                </button>
+            </td>
+            <td>
+                <form action="{{url_for('delete_staff', staff_id=staff.get_staff_id())}}" method="POST">
+                    <!-- Button to Open the Modal -->
+                    <button class="btn-red" data-bs-target="#myModal_{{staff.get_staff_id()}}" data-bs-toggle="modal"
+                            type="button">
+                        Delete
+                    </button>
+
+                    <!-- The Modal -->
+                    <div class="modal" id="myModal_{{staff.get_staff_id()}}">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Delete Confirmation</h4>
+                                    <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Are you sure you want to delete {{staff.get_email()}}?
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <input class="btn btn-danger" type="submit" value="Delete">
+                                    <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+</div>
+<script>
+    function staffid() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("staff_id");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+
+</script>
+{% endblock %}

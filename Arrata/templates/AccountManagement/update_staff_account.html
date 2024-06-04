@@ -1,0 +1,76 @@
+{% extends "AccountManagement/staff_management_base.html" %}
+
+{% block content %}
+<style>
+    h1{
+        padding-top: 50px;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+    table{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    table tr th{
+        font-size: 25px;
+        text-align:right;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+
+    table tr td{
+        font-size: 25px;
+        text-align:left;
+    }
+    div{
+        text-align: center;
+    }
+    #msg{
+        padding-top: 20px;
+        color: red;
+        font-size: 20px;
+    }
+    #update{
+        font-size: 25px;
+        background-color: #6FC9E7;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 50px 10px;
+    }
+    #update:hover{
+       background-color: blue;
+       color: white;
+    }
+    td{
+        padding-bottom: 10px;
+    }
+</style>
+<h1 class="display-4">Update Staff</h1>
+
+<form method="POST" action="">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p id="msg">{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    {% for staff in staff_list %}
+    <table>
+        <tr>
+            <th>Email: </th>
+            <td><input type="text" name='email' pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" title="For example: john@gmail.com" placeholder="Enter Username" value="{{ staff.get_email() }}"></td>
+        </tr>
+        <tr>
+            <th>Password: </th>
+            <td><input type="password"name='password' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Enter Password"></td>
+        </tr>
+    </table>
+    <br>
+    <button type="submit" id="update">Update</button>
+    {% endfor %}
+</form>
+{% endblock %}
+

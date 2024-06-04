@@ -1,0 +1,177 @@
+{% extends "AccountManagement/staff_management_base.html" %}
+{% block title %}Arata - Queue{% endblock %}
+
+{% block content %}
+<style>
+.button-55 {
+  align-self: center;
+  background-color: #fff;
+  background-image: none;
+  background-position: 0 90%;
+  background-repeat: repeat no-repeat;
+  background-size: 4px 3px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: #41403e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Neucha, sans-serif;
+  font-size: 1rem;
+  line-height: 23px;
+  outline: none;
+  padding: .75rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-left:0px;
+  float:right;
+}
+
+.button-55:hover {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
+
+.button-55:focus {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
+.button-17 {
+  align-items: center;
+  appearance: none;
+  background-color: #fff;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-family: "Google Sans",Roboto,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  padding: 2px 24px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform,opacity;
+  z-index: 0;
+  margin-left:0px;
+  float:right;
+}
+
+.button-17:hover {
+  background: #F6F9FE;
+  color: #174ea6;
+}
+
+.button-17:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+}
+
+.button-17:focus {
+  outline: none;
+  border: 2px solid #4285f4;
+}
+
+.button-17:not(:disabled) {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.button-17:not(:disabled):hover {
+  box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+}
+
+.button-17:not(:disabled):focus {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.button-17:not(:disabled):active {
+  box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+}
+
+.button-17:disabled {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+p.lopi {
+font-size: 100px;
+text-align: center;
+}
+td.lopi {
+font-size: 110px;
+text-align: center;
+}
+.butt {
+margin-left:0px;
+float:right;
+}
+.table th {
+text-align:center;
+font-size: 30px;
+background-color: #009879;
+color: #ffffff;
+font-weight:bold;
+}
+.table td {
+position:relative;
+font-family: Helvetica, sans-serif;
+font-size: 50px;
+background-image: linear-gradient(to right top, #00ff4c, #00fa77, #00f496, #00ecae, #00e4bf, #28e2c8, #40e0cf, #54ded4, #6ee3da, #83e8e0, #97ece6, #aaf1ec);
+}
+
+</style>
+<center><h1 class="display-4">Queue</h1></center>
+<form class="butt" action="{{ url_for('reset_queue') }}"><button class="button-55">Reset Queue</button></form>
+
+<!--<table>-->
+<!--    <tr>-->
+<!--        <td>-->
+<!--            <p>Now Serving</p><br>-->
+<!--            <button><a href="/nowServingMinus/">-</a></button>-->
+<!--            {% for serve in serve_list %}-->
+<!--            <p>{{ serve.get_serve_no() }}</p>-->
+<!--            {% endfor %}-->
+<!--            <button><a href="/nowServingPlus/">+</a></button>-->
+
+<!--        </td>-->
+<!--    </tr>-->
+<!--</table>-->
+
+<table class="table">
+  <tr>
+    <th>All Queue Numbers</th>
+  </tr>
+      {% for queue in queue_list %}
+  <tr>
+    <td>
+        {{ queue.get_generate_queue_no() }}<form action="{{ url_for('delete_queue', id=queue.get_generate_queue_no()) }}"><button class="button-17" type="submit" value="Delete" >Delete</button></form>
+        <form action="{{ url_for('update_queue', id=queue.get_generate_queue_no()) }}"><button class="button-17" type="submit" value="Update" >Update</button></form>
+    </td>
+    {% endfor %}
+  </tr>
+</table>
+
+
+
+{% endblock %}

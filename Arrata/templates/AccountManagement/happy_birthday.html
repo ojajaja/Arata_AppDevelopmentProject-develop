@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Arata{% endblock %}
+
+{% block content %}
+<style>
+    p{
+        text-align: center;
+        margin-left: 10%;
+        font-size: 30px;
+    }
+    #birthday_img{
+        width: 20%;
+        height: 20%;
+        margin-left: 45%;
+    }
+</style>
+<br>
+<p>Arata wishing {{name}} a happy bithday</p>
+<p>You have received a Birthday Voucher</p><br>
+<img src="{{url_for('static',filename = 'images/birthday-wishes.gif')}}" id="birthday_img">
+{% endblock %}
